@@ -70,12 +70,13 @@ Rez uses the rez-bind tool to create packages that reference software already in
 **Run the Quickstart Binding**:
 
 ```bash
+# Run PowerShell as Administrator for this step
 rez-bind --quickstart
 ```
 
-This command binds essential packages like platform, arch, os, and python into your Rez environment.
+> **Important**: This command must be run in PowerShell with Administrator privileges because it creates symbolic links that require elevated permissions on Windows systems.
 
-> **Note**: Administrative privileges may be required for some bindings.
+This command binds essential packages like platform, arch, os, and python into your Rez environment.
 
 ## 5. Handling Python Package Binding Issues
 
@@ -187,6 +188,8 @@ This command creates an environment with both Maya and NumPy available.
 - **Permission Errors**: When binding packages, ensure you have the necessary permissions or run the command with administrative privileges.
 
 - **Package Resolution Failures**: Use `rez-context --explain` to diagnose dependency resolution issues.
+
+- **Symbolic Link Errors**: Many Rez operations on Windows require either Administrator privileges or Developer Mode enabled due to Windows' restrictions on symbolic link creation.
 
 ## Resources
 
