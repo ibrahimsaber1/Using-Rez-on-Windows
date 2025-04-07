@@ -155,11 +155,43 @@ version = "1.23.0"
 requires = ["maya-2023"]
 description = "NumPy installed for Maya 2023 compatibility"
 
+build_command = "python {root}/build.py {install_root}"
+
 def commands():
-    # Add NumPy to PYTHONPATH or use pip to install within the rez environment
+    # Add the installed NumPy to PYTHONPATH
     import os
-    env.PYTHONPATH.append('/path/to/numpy/installation')
+    env.PYTHONPATH.append(os.path.join("{root}", "lib", "site-packages"))
 ```
+
+3. **Create the build.py File**: In the same `1.23.0` folder, create a `build.py` file with this script:
+
+```python
+import os
+import subprocess
+import sys
+
+# Get the installation root directory from the command line arguments
+package_root = sys.argv[1]
+
+# Path to Maya's Python interpreter
+mayapy = os.path.join(os.environ.get("MAYA_LOCATION", "C:/Program Files/Autodesk/Maya2023"), "bin", "mayapy.exe")
+
+# Create the site-packages directory
+install_dir = os.path.join(package_root, "lib", "site-packages")
+os.makedirs(install_dir, exist_ok=True)
+
+# Install NumPy using pip with Maya's Python interpreter
+numpy_version = "1.23.0"
+subprocess.check_call([mayapy, "-m", "pip", "install", f"numpy=={numpy_version}", "-t", install_dir])
+```
+
+4. **Build the Package**: To build the package, use the following command:
+
+```bash
+rez-build --install
+```
+
+Run this command from within the `maya_numpy/1.23.0` directory.
 
 ## 9. Running Maya with Integrated Libraries
 
