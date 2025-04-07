@@ -226,4 +226,4 @@ This command creates an environment with both Maya and NumPy available.
 ## Resources
 
 - [Official Rez Documentation](https://github.com/AcademySoftwareFoundation/rez/wiki)
-- [Rez Package Examples](https://github.com/AcademySoftwareFoundation/rez/tree/main/example)
+- [Rez Package Examples](https://github.com/AcademySoftwareFoundation/rez/tree/main/)
