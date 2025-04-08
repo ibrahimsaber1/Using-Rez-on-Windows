@@ -100,7 +100,7 @@ On Windows, binding the Python package can encounter issues due to symbolic link
    - Create the Python Package:
 
      ```bash
-     rezify_python -v 3.10.0
+     rezpy -v 3.10.0
      ```
      
      Replace 3.10.0 with the Python version used by your DaVinci Resolve (see Section 7).
